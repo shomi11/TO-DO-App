@@ -25,4 +25,15 @@ extension Task {
     var unwrapedDetail: String {
         detail ?? ""
     }
+    
+    static var example: Task {
+       let contoller = DataController(inRAMMemoryUsage: true)
+        let context = contoller.container.viewContext
+        let task = Task(context: context)
+        task.title = "Example task"
+        task.creationDate = Date()
+        task.detail = "This is example detail task"
+        task.priority = 3
+        return task
+    }
 }
