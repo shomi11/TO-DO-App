@@ -10,6 +10,8 @@ import Foundation
 
 extension Project {
     
+    static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
+    
     var unwrapedTitle: String {
         title ?? ""
     }
@@ -23,7 +25,7 @@ extension Project {
     }
     
     var unwrapedColor: String {
-        color ?? "red"
+        color ?? "Light Blue"
     }
     
     var comppletionAmmount: Double {

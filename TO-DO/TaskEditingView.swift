@@ -43,7 +43,7 @@ struct TaskEditingView: View {
                 Toggle("Mark completed", isOn: $completed.onChange(saveEditedTask))
             }
         }.navigationTitle("Edit Task")
-        .onDisappear(perform: (saveEditedTask))
+        .onDisappear(perform: dataController.save)
     }
     
     private func saveEditedTask() {
