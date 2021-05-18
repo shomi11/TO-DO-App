@@ -11,6 +11,9 @@
 		CA2642A12651DEBD0095077B /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2642A02651DEBD0095077B /* ProjectView.swift */; };
 		CA2642A32651E6DC0095077B /* ProjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2642A22651E6DC0095077B /* ProjectExtension.swift */; };
 		CA2642A52651E7C80095077B /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2642A42651E7C80095077B /* TaskExtension.swift */; };
+		CA68ACBD26527ADA002E42D0 /* TaskEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA68ACBC26527ADA002E42D0 /* TaskEditingView.swift */; };
+		CA68ACBF26528273002E42D0 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA68ACBE26528273002E42D0 /* TaskRowView.swift */; };
+		CA68ACC1265285E9002E42D0 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA68ACC0265285E9002E42D0 /* BindingExtension.swift */; };
 		CAA0813126508251004EE265 /* TO_DOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813026508251004EE265 /* TO_DOApp.swift */; };
 		CAA0813326508251004EE265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813226508251004EE265 /* ContentView.swift */; };
 		CAA0813526508251004EE265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA0813426508251004EE265 /* Assets.xcassets */; };
@@ -24,6 +27,9 @@
 		CA2642A02651DEBD0095077B /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		CA2642A22651E6DC0095077B /* ProjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectExtension.swift; sourceTree = "<group>"; };
 		CA2642A42651E7C80095077B /* TaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskExtension.swift; sourceTree = "<group>"; };
+		CA68ACBC26527ADA002E42D0 /* TaskEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditingView.swift; sourceTree = "<group>"; };
+		CA68ACBE26528273002E42D0 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		CA68ACC0265285E9002E42D0 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		CAA0812D26508251004EE265 /* TO-DO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TO-DO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA0813026508251004EE265 /* TO_DOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TO_DOApp.swift; sourceTree = "<group>"; };
 		CAA0813226508251004EE265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				CAA0813026508251004EE265 /* TO_DOApp.swift */,
+				CA68ACC0265285E9002E42D0 /* BindingExtension.swift */,
+				CA68ACBE26528273002E42D0 /* TaskRowView.swift */,
+				CA68ACBC26527ADA002E42D0 /* TaskEditingView.swift */,
 				CA26429E2651DEB00095077B /* HomeView.swift */,
 				CA2642A02651DEBD0095077B /* ProjectView.swift */,
 				CA2642A22651E6DC0095077B /* ProjectExtension.swift */,
@@ -156,11 +165,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA68ACBF26528273002E42D0 /* TaskRowView.swift in Sources */,
 				CA2642A32651E6DC0095077B /* ProjectExtension.swift in Sources */,
 				CA2642A12651DEBD0095077B /* ProjectView.swift in Sources */,
+				CA68ACC1265285E9002E42D0 /* BindingExtension.swift in Sources */,
 				CAA081412650892D004EE265 /* Main.xcdatamodeld in Sources */,
 				CAA0814326508D58004EE265 /* DataController.swift in Sources */,
 				CAA0813326508251004EE265 /* ContentView.swift in Sources */,
+				CA68ACBD26527ADA002E42D0 /* TaskEditingView.swift in Sources */,
 				CA26429F2651DEB00095077B /* HomeView.swift in Sources */,
 				CA2642A52651E7C80095077B /* TaskExtension.swift in Sources */,
 				CAA0813126508251004EE265 /* TO_DOApp.swift in Sources */,

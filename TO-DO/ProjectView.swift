@@ -26,7 +26,7 @@ struct ProjectView: View {
                 ForEach(projects.wrappedValue) { project in
                     Section(header: Text(project.unwrapedTitle)) {
                         ForEach(project.projectTasks) { task in
-                            Text(task.unwrapedTitle)
+                            TaskRowView(task: task)
                         }
                     }
                 }
