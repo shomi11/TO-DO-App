@@ -13,7 +13,7 @@ extension Project {
     static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
     
     var unwrapedTitle: String {
-        title ?? ""
+        title ?? "New Project"
     }
     
     var unwrapedCreationDate: Date {

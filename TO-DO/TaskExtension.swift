@@ -11,7 +11,7 @@ import Foundation
 extension Task {
     
     var unwrapedTitle: String {
-        title ?? ""
+        title ?? "New Task"
     }
     
     var unwrapedCreationDate: Date {
