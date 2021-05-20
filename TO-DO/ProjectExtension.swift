@@ -36,8 +36,22 @@ extension Project {
     }
     
     var projectTasks: [Task] {
-        let allTasks = tasks?.allObjects as? [Task] ?? []
-        return allTasks.sorted { first, second in
+        tasks?.allObjects as? [Task] ?? []
+    }
+    
+    func projectTasks(using sortOrder: Task.SortOrder) -> [Task] {
+        switch sortOrder {
+        case .title:
+            return projectTasks.sorted { $0.unwrapedTitle < $1.unwrapedTitle }
+        case .creationDate:
+            return projectTasks.sorted { $0.unwrapedCreationDate < $1.unwrapedCreationDate }
+        case .default:
+            return projectTasksDefaultSorted
+        }
+    }
+    
+    var projectTasksDefaultSorted: [Task] {
+        return projectTasks.sorted { first, second in
             if first.completed == false {
                 if second.completed == true {
                     return true

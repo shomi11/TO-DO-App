@@ -10,6 +10,10 @@ import Foundation
 
 extension Task {
     
+    enum SortOrder {
+        case title, `default`, creationDate
+    }
+    
     var unwrapedTitle: String {
         title ?? "New Task"
     }

@@ -56,7 +56,10 @@ struct TaskEditingView: View {
 }
 
 struct TaskEditingView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
     static var previews: some View {
         TaskEditingView(task: Task.example)
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
     }
 }
