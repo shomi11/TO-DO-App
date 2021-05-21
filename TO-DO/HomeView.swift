@@ -35,72 +35,21 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: projectRows) {
-                            ForEach(projects) {project in
-                                VStack(alignment: .leading) {
-                                    let tasks = project.projectTasks.filter { $0.completed == false }
-                                    Text("\(tasks.count) open tasks")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Text(project.unwrapedTitle)
-                                        .font(.title2)
-                                    ProgressView(value: project.comppletionAmmount)
-                                        .accentColor(Color(project.unwrapedColor))
-                                }
-                                .padding()
-                                .background(Color.secondarySystemGroupedBackgroundColor)
-                                .cornerRadius(8)
-                                .accessibilityElement(children: .combine)
-                                .accessibility(label: Text("\(project.unwrapedTitle), \(project.projectTasks.count) tasks, \(project.comppletionAmmount * 100, specifier: "%g") percent complete"))
-                            }
+                            ForEach(projects, content: ProjectSummaryBoxView.init)
                         }
                         .padding([.horizontal, .top])
                         .fixedSize(horizontal: false, vertical: true)
                     }
                     
                     VStack(alignment: .leading) {
-                        importantTaskList("Up next", for: tasks.wrappedValue.prefix(3))
-                        importantTaskList("More task", for: tasks.wrappedValue.dropFirst(3))
+                        TaskSubsequenceView(title: "Next Task", tasks: tasks.wrappedValue.prefix(3))
+                        TaskSubsequenceView(title: "More", tasks: tasks.wrappedValue.dropFirst(3))
                     }
                     .padding(.horizontal)
                 }
             }
             .background(Color.groupedSystemBackgroundColor.ignoresSafeArea())
             .navigationTitle("Home")
-        }
-    }
-    
-    @ViewBuilder func importantTaskList(_ title: String, for tasks: FetchedResults<Task>.SubSequence) -> some View {
-        if tasks.isEmpty {
-            EmptyView()
-        } else {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.secondary)
-                .padding(.top)
-            ForEach(tasks) { task in
-                NavigationLink(destination: TaskEditingView(task: task)) {
-                    HStack(spacing: 16) {
-                        Circle()
-                            .stroke(Color(task.project?.unwrapedColor ?? "Light Blue"), lineWidth: 3)
-                            .frame(width: 10, height: 10)
-                        VStack(alignment: .leading) {
-                            Text(task.unwrapedTitle)
-                                .font(.body)
-                                .foregroundColor(.primary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            if !task.unwrapedDetail.isEmpty {
-                                Text(task.unwrapedDetail)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    }
-                    .padding()
-                    .background(Color.secondarySystemGroupedBackgroundColor)
-                    .cornerRadius(8)
-                }
-            }
         }
     }
 }

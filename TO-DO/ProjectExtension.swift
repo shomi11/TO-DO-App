@@ -5,7 +5,7 @@
 //  Created by Milos Malovic on 17.5.21..
 //
 
-import Foundation
+import SwiftUI
 
 
 extension Project {
@@ -33,6 +33,10 @@ extension Project {
         guard items.isEmpty == false else { return 0 }
         let completedTasks = items.filter(\.completed)
         return Double(completedTasks.count) / Double(items.count)
+    }
+    
+    var accesibilityLbl: Text {
+        return Text("\(unwrapedTitle), \(projectTasks.count) tasks, \(comppletionAmmount * 100, specifier: "%g") percent complete")
     }
     
     var projectTasks: [Task] {
