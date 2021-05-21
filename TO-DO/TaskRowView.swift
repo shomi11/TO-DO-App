@@ -12,6 +12,19 @@ struct TaskRowView: View {
     @ObservedObject var project: Project
     @ObservedObject var task: Task
     
+    var body: some View {
+        NavigationLink(destination: TaskEditingView(task: task)) {
+            Label {
+                Text(task.unwrapedTitle)
+            } icon: {
+                icon
+            }
+        }
+        .accessibilityLabel(accesibilitiLbl)
+    }
+}
+
+private extension TaskRowView {
     var icon: some View {
         if task.completed {
             return Image(systemName: "checkmark.circle")
@@ -38,17 +51,6 @@ struct TaskRowView: View {
         } else {
             return Text("\(task.unwrapedTitle)")
         }
-    }
-    
-    var body: some View {
-        NavigationLink(destination: TaskEditingView(task: task)) {
-            Label {
-                Text(task.unwrapedTitle)
-            } icon: {
-                icon
-            }
-        }
-        .accessibilityLabel(accesibilitiLbl)
     }
 }
 

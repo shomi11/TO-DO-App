@@ -20,30 +20,34 @@ struct TaskSubsequenceView: View {
                 .font(.headline)
                 .foregroundColor(.secondary)
                 .padding(.top)
-            ForEach(tasks) { task in
-                NavigationLink(destination: TaskEditingView(task: task)) {
-                    HStack(spacing: 16) {
-                        Circle()
-                            .stroke(Color(task.project?.unwrapedColor ?? "Light Blue"), lineWidth: 3)
-                            .frame(width: 10, height: 10)
-                        VStack(alignment: .leading) {
-                            Text(task.unwrapedTitle)
-                                .font(.body)
-                                .foregroundColor(.primary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            if !task.unwrapedDetail.isEmpty {
-                                Text(task.unwrapedDetail)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
+            ForEach(tasks, content: taskRowView)
+        }
+    }
+}
+
+private extension TaskSubsequenceView {
+    func taskRowView(for task: Task) -> some View {
+        NavigationLink(destination: TaskEditingView(task: task)) {
+            HStack(spacing: 16) {
+                Circle()
+                    .stroke(Color(task.project?.unwrapedColor ?? "Light Blue"), lineWidth: 3)
+                    .frame(width: 10, height: 10)
+                VStack(alignment: .leading) {
+                    Text(task.unwrapedTitle)
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    if !task.unwrapedDetail.isEmpty {
+                        Text(task.unwrapedDetail)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
-                    .padding()
-                    .background(Color.secondarySystemGroupedBackgroundColor)
-                    .cornerRadius(8)
                 }
             }
         }
+        .padding()
+        .background(Color.secondarySystemGroupedBackgroundColor)
+        .cornerRadius(8)
     }
 }

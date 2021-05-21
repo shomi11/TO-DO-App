@@ -36,30 +36,9 @@ struct ProjectEditingView: View {
             
             Section(header: Text("Choose project color:")) {
                 LazyVGrid(columns: colorColoumns) {
-                    ForEach(Project.colors, id: \.self) { item in
-                        ZStack {
-                            Color(item)
-                                .aspectRatio(1, contentMode: .fit)
-                                .cornerRadius(6)
-                            
-                            if color == item {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.white)
-                                    .font(.largeTitle)
-                            }
-                        }.onTapGesture {
-                            color = item
-                            updateEditedProject()
-                        }
-                        .accessibilityElement(children: .ignore)
-                        .accessibilityAddTraits(
-                            item == color
-                                ? [.isButton, .isSelected]
-                            : .isButton
-                        )
-                        .accessibilityLabel(item)
-                    }
-                }.padding(.vertical, 6)
+                    ForEach(Project.colors, id: \.self, content: chooseColorBtn)
+                }
+                .padding(.vertical, 6)
             }
             
             Section(footer: Text("Closing a project will move project to closed tab, deleting project removes it entirely")) {
@@ -91,6 +70,30 @@ struct ProjectEditingView: View {
     private func deleteProject() {
         dataController.delete(project)
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    private func chooseColorBtn(for item: String) -> some View {
+        ZStack {
+            Color(item)
+                .aspectRatio(1, contentMode: .fit)
+                .cornerRadius(6)
+            
+            if color == item {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+            }
+        }.onTapGesture {
+            color = item
+            updateEditedProject()
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(
+            item == color
+                ? [.isButton, .isSelected]
+            : .isButton
+        )
+        .accessibilityLabel(item)
     }
 }
 

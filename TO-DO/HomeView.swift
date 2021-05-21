@@ -9,9 +9,10 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
+   
     static let tag: String? = "HomeView"
+
     @EnvironmentObject var dataController: DataController
-    
     @FetchRequest(entity: Project.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Project.closed, ascending: true), NSSortDescriptor(keyPath: \Project.creationDate, ascending: true)] , predicate: NSPredicate(format: "closed = false"))
     
     var projects: FetchedResults<Project>
@@ -33,14 +34,7 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHGrid(rows: projectRows) {
-                            ForEach(projects, content: ProjectSummaryBoxView.init)
-                        }
-                        .padding([.horizontal, .top])
-                        .fixedSize(horizontal: false, vertical: true)
-                    }
-                    
+                    topProjectHorizntalView
                     VStack(alignment: .leading) {
                         TaskSubsequenceView(title: "Next Task", tasks: tasks.wrappedValue.prefix(3))
                         TaskSubsequenceView(title: "More", tasks: tasks.wrappedValue.dropFirst(3))
@@ -50,6 +44,18 @@ struct HomeView: View {
             }
             .background(Color.groupedSystemBackgroundColor.ignoresSafeArea())
             .navigationTitle("Home")
+        }
+    }
+}
+
+extension HomeView {
+    var topProjectHorizntalView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHGrid(rows: projectRows) {
+                ForEach(projects, content: ProjectSummaryBoxView.init)
+            }
+            .padding([.horizontal, .top])
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
