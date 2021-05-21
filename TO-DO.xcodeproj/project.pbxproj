@@ -17,6 +17,7 @@
 		CA6A3C362653BE3400E6CC6D /* ProjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A3C352653BE3400E6CC6D /* ProjectHeaderView.swift */; };
 		CA6A3C382653C25B00E6CC6D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6A3C372653C25B00E6CC6D /* Colors.xcassets */; };
 		CA6A3C3A2653C3BF00E6CC6D /* ProjectEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A3C392653C3BF00E6CC6D /* ProjectEditingView.swift */; };
+		CA7DD2292657BD9200984E2F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DD2282657BD9200984E2F /* ColorExtension.swift */; };
 		CA8AED4C2656AAF40036818C /* CustomEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AED4B2656AAF40036818C /* CustomEmptyView.swift */; };
 		CAA0813126508251004EE265 /* TO_DOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813026508251004EE265 /* TO_DOApp.swift */; };
 		CAA0813326508251004EE265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813226508251004EE265 /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 		CA6A3C352653BE3400E6CC6D /* ProjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHeaderView.swift; sourceTree = "<group>"; };
 		CA6A3C372653C25B00E6CC6D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CA6A3C392653C3BF00E6CC6D /* ProjectEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditingView.swift; sourceTree = "<group>"; };
+		CA7DD2282657BD9200984E2F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CA8AED4B2656AAF40036818C /* CustomEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmptyView.swift; sourceTree = "<group>"; };
 		CAA0812D26508251004EE265 /* TO-DO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TO-DO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA0813026508251004EE265 /* TO_DOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TO_DOApp.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				CAA0813226508251004EE265 /* ContentView.swift */,
 				CAA0813F2650892D004EE265 /* Main.xcdatamodeld */,
 				CAA0814226508D58004EE265 /* DataController.swift */,
+				CA7DD2282657BD9200984E2F /* ColorExtension.swift */,
 				CAA0813426508251004EE265 /* Assets.xcassets */,
 				CA6A3C372653C25B00E6CC6D /* Colors.xcassets */,
 				CAA0813926508251004EE265 /* Info.plist */,
@@ -187,6 +190,7 @@
 				CAA081412650892D004EE265 /* Main.xcdatamodeld in Sources */,
 				CAA0814326508D58004EE265 /* DataController.swift in Sources */,
 				CAA0813326508251004EE265 /* ContentView.swift in Sources */,
+				CA7DD2292657BD9200984E2F /* ColorExtension.swift in Sources */,
 				CA68ACBD26527ADA002E42D0 /* TaskEditingView.swift in Sources */,
 				CA26429F2651DEB00095077B /* HomeView.swift in Sources */,
 				CA6A3C3A2653C3BF00E6CC6D /* ProjectEditingView.swift in Sources */,
