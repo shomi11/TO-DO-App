@@ -49,6 +49,8 @@ struct HomeView: View {
                                 .padding()
                                 .background(Color.secondarySystemGroupedBackgroundColor)
                                 .cornerRadius(8)
+                                .accessibilityElement(children: .combine)
+                                .accessibility(label: Text("\(project.unwrapedTitle), \(project.projectTasks.count) tasks, \(project.comppletionAmmount * 100, specifier: "%g") percent complete"))
                             }
                         }
                         .padding([.horizontal, .top])

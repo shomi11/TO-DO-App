@@ -87,6 +87,7 @@ struct ProjectView: View {
                             showingSortOrder.toggle()
                         } label: {
                             Label("Sort", systemImage: "arrow.up.arrow.down")
+                                .accessibilityLabel(Text("Add new project"))
                         }
                     }
                 }

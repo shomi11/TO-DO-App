@@ -28,6 +28,18 @@ struct TaskRowView: View {
         }
     }
     
+    var accesibilitiLbl: Text {
+        if task.completed {
+            return Text("\(task.unwrapedTitle) completed.")
+        } else if task.priority == 3 {
+            return Text("\(task.unwrapedTitle) is high priority.")
+        } else if task.priority == 2 {
+            return Text("\(task.unwrapedTitle) is medium priority.")
+        } else {
+            return Text("\(task.unwrapedTitle)")
+        }
+    }
+    
     var body: some View {
         NavigationLink(destination: TaskEditingView(task: task)) {
             Label {
@@ -36,6 +48,7 @@ struct TaskRowView: View {
                 icon
             }
         }
+        .accessibilityLabel(accesibilitiLbl)
     }
 }
 
