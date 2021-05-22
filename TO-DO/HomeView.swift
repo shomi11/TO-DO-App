@@ -9,30 +9,33 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-   
+
     static let tag: String? = "HomeView"
 
     @EnvironmentObject var dataController: DataController
-    @FetchRequest(entity: Project.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: true)] , predicate: NSPredicate(format: "closed = false"))
-    
+    @FetchRequest(entity: Project.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: true)],
+                  predicate: NSPredicate(format: "closed = false"))
+
     var projects: FetchedResults<Project>
     var tasks: FetchRequest<Task>
-    
+
     var projectRows: [GridItem] {
         [GridItem(.adaptive(minimum: 120, maximum: 120))]
     }
-    
+
     init() {
         let taskRequest: NSFetchRequest<Task> = Task.fetchRequest()
         let taskClosedPredicate = NSPredicate(format: "completed = false")
         let projectClosedPredicate = NSPredicate(format: "project.closed = false")
-        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [taskClosedPredicate, projectClosedPredicate])
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates:
+                                                        [taskClosedPredicate, projectClosedPredicate])
         taskRequest.predicate = compoundPredicate
         taskRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Task.priority, ascending: false)]
         taskRequest.fetchLimit = 8
         tasks = FetchRequest(fetchRequest: taskRequest)
     }
-    
+
     var body: some View {
         NavigationView {
             ScrollView {

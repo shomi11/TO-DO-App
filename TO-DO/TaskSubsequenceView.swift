@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TaskSubsequenceView: View {
-    
+
     let title: String
     let tasks: FetchedResults<Task>.SubSequence
-    
+
     var body: some View {
         if tasks.isEmpty {
             EmptyView()
@@ -37,7 +37,7 @@ private extension TaskSubsequenceView {
                         .font(.body)
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     if !task.unwrapedDetail.isEmpty {
                         Text(task.unwrapedDetail)
                             .font(.caption)

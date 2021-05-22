@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TaskRowView: View {
-    
+
     @ObservedObject var project: Project
     @ObservedObject var task: Task
-    
+
     var body: some View {
         NavigationLink(destination: TaskEditingView(task: task)) {
             Label {
@@ -40,7 +40,7 @@ private extension TaskRowView {
                 .foregroundColor(.clear)
         }
     }
-    
+
     var accesibilitiLbl: Text {
         if task.completed {
             return Text("\(task.unwrapedTitle) completed.")

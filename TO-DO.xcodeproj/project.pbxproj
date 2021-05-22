@@ -21,7 +21,7 @@
 		CA7DD22B2657E4CD00984E2F /* TaskSubsequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DD22A2657E4CD00984E2F /* TaskSubsequenceView.swift */; };
 		CA7DD22D2657E67200984E2F /* ProjectSummaryBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DD22C2657E67200984E2F /* ProjectSummaryBoxView.swift */; };
 		CA8AED4C2656AAF40036818C /* CustomEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AED4B2656AAF40036818C /* CustomEmptyView.swift */; };
-		CAA0813126508251004EE265 /* TO_DOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813026508251004EE265 /* TO_DOApp.swift */; };
+		CAA0813126508251004EE265 /* TODOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813026508251004EE265 /* TODOApp.swift */; };
 		CAA0813326508251004EE265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0813226508251004EE265 /* ContentView.swift */; };
 		CAA0813526508251004EE265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA0813426508251004EE265 /* Assets.xcassets */; };
 		CAA0813826508251004EE265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA0813726508251004EE265 /* Preview Assets.xcassets */; };
@@ -45,7 +45,7 @@
 		CA7DD22C2657E67200984E2F /* ProjectSummaryBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSummaryBoxView.swift; sourceTree = "<group>"; };
 		CA8AED4B2656AAF40036818C /* CustomEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmptyView.swift; sourceTree = "<group>"; };
 		CAA0812D26508251004EE265 /* TO-DO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TO-DO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAA0813026508251004EE265 /* TO_DOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TO_DOApp.swift; sourceTree = "<group>"; };
+		CAA0813026508251004EE265 /* TODOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOApp.swift; sourceTree = "<group>"; };
 		CAA0813226508251004EE265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CAA0813426508251004EE265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA0813726508251004EE265 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		CAA0812F26508251004EE265 /* TO-DO */ = {
 			isa = PBXGroup;
 			children = (
-				CAA0813026508251004EE265 /* TO_DOApp.swift */,
+				CAA0813026508251004EE265 /* TODOApp.swift */,
 				CA68ACC0265285E9002E42D0 /* BindingExtension.swift */,
 				CA68ACBE26528273002E42D0 /* TaskRowView.swift */,
 				CA68ACBC26527ADA002E42D0 /* TaskEditingView.swift */,
@@ -127,6 +127,7 @@
 				CAA0812926508251004EE265 /* Sources */,
 				CAA0812A26508251004EE265 /* Frameworks */,
 				CAA0812B26508251004EE265 /* Resources */,
+				CA7DD22E26587CFC00984E2F /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -182,6 +183,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CA7DD22E26587CFC00984E2F /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CAA0812926508251004EE265 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,7 +225,7 @@
 				CA26429F2651DEB00095077B /* HomeView.swift in Sources */,
 				CA6A3C3A2653C3BF00E6CC6D /* ProjectEditingView.swift in Sources */,
 				CA2642A52651E7C80095077B /* TaskExtension.swift in Sources */,
-				CAA0813126508251004EE265 /* TO_DOApp.swift in Sources */,
+				CAA0813126508251004EE265 /* TODOApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

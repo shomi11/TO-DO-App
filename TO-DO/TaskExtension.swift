@@ -7,29 +7,28 @@
 
 import Foundation
 
-
 extension Task {
-    
+
     enum SortOrder {
         case title, `default`, creationDate
     }
-    
+
     var unwrapedTitle: String {
         title ?? "New Task"
     }
-    
+
     var unwrapedCreationDate: Date {
         creationDate ?? Date()
     }
-    
+
     var unwrapedPriority: Int {
         Int(priority)
     }
-    
+
     var unwrapedDetail: String {
         detail ?? ""
     }
-    
+
     static var example: Task {
        let contoller = DataController(inRAMMemoryUsage: true)
         let context = contoller.container.viewContext

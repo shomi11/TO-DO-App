@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct TaskEditingView: View {
-    
+
     let task: Task
-    
+
     @EnvironmentObject var dataController: DataController
-    
+
     @State private var title: String
     @State private var detail: String
     @State private var completed: Bool
     @State private var priority: Int
-    
+
     init(task: Task) {
         self.task = task
         _title = State(wrappedValue: task.unwrapedTitle)
@@ -25,7 +25,7 @@ struct TaskEditingView: View {
         _completed = State(wrappedValue: task.completed)
         _priority = State(wrappedValue: task.unwrapedPriority)
     }
-    
+
     var body: some View {
         Form {
             Section(header: Text("Settings")) {
@@ -45,7 +45,7 @@ struct TaskEditingView: View {
         }.navigationTitle("Edit Task")
         .onDisappear(perform: dataController.save)
     }
-    
+
     private func saveEditedTask() {
         task.project?.objectWillChange.send()
         task.title = title

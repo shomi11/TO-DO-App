@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct ProjectView: View {
-    
+
     static let openTag: String? = "OpenProjectView"
     static let closeTag: String? = "ClosedProjectsView"
-    
+
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var manageObjectContext
     @State private var showingSortOrder: Bool = false
     @State private var sortOrder = Task.SortOrder.default
-    
+
     let showClosedProject: Bool
     let projects: FetchRequest<Project>
-    
+
     init(showClosedProject: Bool) {
         self.showClosedProject = showClosedProject
         projects = FetchRequest<Project>(entity: Project.entity(), sortDescriptors: [
             NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)
         ], predicate: NSPredicate(format: "closed = %d", showClosedProject))
     }
-    
+
     var body: some View {
         NavigationView {
             Group {
@@ -52,7 +52,7 @@ struct ProjectView: View {
             CustomEmptyView()
         }
     }
-    
+
     func addNewProject() {
         withAnimation {
             let project = Project(context: manageObjectContext)
@@ -61,7 +61,7 @@ struct ProjectView: View {
             dataController.save()
         }
     }
-    
+
     func addNewTask(to project: Project) {
         withAnimation {
             let task = Task(context: manageObjectContext)
@@ -70,7 +70,7 @@ struct ProjectView: View {
             dataController.save()
         }
     }
-    
+
     func deleteTask(_ offsets: IndexSet, project: Project) {
         for offset in offsets {
             let task = project.projectTasks(using: sortOrder)[offset]
@@ -104,7 +104,7 @@ fileprivate extension ProjectView {
         }
         .listStyle(InsetGroupedListStyle())
     }
-    
+
     var addProjectToolBarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             if showClosedProject == false {
@@ -117,7 +117,7 @@ fileprivate extension ProjectView {
             }
         }
     }
-    
+
     var sortOrderToolBarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             if showClosedProject == false {
@@ -132,9 +132,9 @@ fileprivate extension ProjectView {
 }
 
 struct ProjectView_Previews: PreviewProvider {
-    
+
     static var dataController = DataController.preview
-    
+
     static var previews: some View {
         ProjectView(showClosedProject: false)
             .environment(\.managedObjectContext, dataController.container.viewContext)

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProjectSummaryBoxView: View {
-    
+
     @ObservedObject var project: Project
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             let tasks = project.projectTasks.filter { $0.completed == false }
