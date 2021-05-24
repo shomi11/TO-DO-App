@@ -21,7 +21,7 @@ extension Project {
                          "Midnight",
                          "Dark Gray",
                          "Gray"
-                                    ]
+    ]
 
     var unwrapedTitle: String {
         title ?? "New Project"
@@ -47,7 +47,8 @@ extension Project {
     }
 
     var accesibilityLbl: Text {
-        return Text("\(unwrapedTitle), \(projectTasks.count) tasks, \(comppletionAmmount * 100, specifier: "%g") percent complete")
+        // swiftlint:disable:next line_length
+        return Text("\(unwrapedTitle), \(projectTasks.count) tasks, \(comppletionAmmount * 100, specifier: "%g") percent complete") //
     }
 
     var projectTasks: [Task] {

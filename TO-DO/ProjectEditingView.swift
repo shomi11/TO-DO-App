@@ -41,6 +41,7 @@ struct ProjectEditingView: View {
                 .padding(.vertical, 6)
             }
 
+            // swiftlint:disable:next line_length
             Section(footer: Text("Closing a project will move project to closed tab, deleting project removes it entirely")) {
                 Button(project.closed ? "Reopen project" : "Close project") {
                     project.closed.toggle()
