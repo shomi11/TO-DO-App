@@ -8,9 +8,7 @@
 import Foundation
 import SwiftUI
 
-
 extension Binding {
-
     /// Binding extension for calling directly on @State properties
     /// This will save us calling default onChange method on body many times.
     /// - Parameter handler: here we need to execute method that we want when value is changed.

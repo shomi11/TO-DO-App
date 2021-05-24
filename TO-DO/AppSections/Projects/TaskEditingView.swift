@@ -46,7 +46,9 @@ struct TaskEditingView: View {
         .onDisappear(perform: dataController.save)
     }
 
+    /// Saves edited task.
     private func saveEditedTask() {
+        /// Notify object that task inside will be changed so it can watch on changes and react.
         task.project?.objectWillChange.send()
         task.title = title
         task.detail = detail

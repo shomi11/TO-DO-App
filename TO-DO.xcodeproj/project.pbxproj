@@ -65,6 +65,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA6C4397265C647900CA0075 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CA2642A42651E7C80095077B /* TaskExtension.swift */,
+				CA2642A22651E6DC0095077B /* ProjectExtension.swift */,
+				CA68ACC0265285E9002E42D0 /* BindingExtension.swift */,
+				CA7DD2282657BD9200984E2F /* ColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CA6C4398265C649F00CA0075 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CAA0813F2650892D004EE265 /* Main.xcdatamodeld */,
+				CAA0813926508251004EE265 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		CA6C4399265C669300CA0075 /* AppSections */ = {
+			isa = PBXGroup;
+			children = (
+				CA6C439A265C66A000CA0075 /* Home */,
+				CA6C439B265C66A900CA0075 /* Projects */,
+			);
+			path = AppSections;
+			sourceTree = "<group>";
+		};
+		CA6C439A265C66A000CA0075 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CA26429E2651DEB00095077B /* HomeView.swift */,
+				CA7DD22C2657E67200984E2F /* ProjectSummaryBoxView.swift */,
+				CA7DD22A2657E4CD00984E2F /* TaskSubsequenceView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CA6C439B265C66A900CA0075 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				CA2642A02651DEBD0095077B /* ProjectView.swift */,
+				CA6A3C352653BE3400E6CC6D /* ProjectHeaderView.swift */,
+				CA6A3C392653C3BF00E6CC6D /* ProjectEditingView.swift */,
+				CA68ACBE26528273002E42D0 /* TaskRowView.swift */,
+				CA68ACBC26527ADA002E42D0 /* TaskEditingView.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		CA6C439D265C6A1600CA0075 /* ReusableGroup */ = {
+			isa = PBXGroup;
+			children = (
+				CA8AED4B2656AAF40036818C /* CustomEmptyView.swift */,
+			);
+			path = ReusableGroup;
+			sourceTree = "<group>";
+		};
 		CAA0812426508251004EE265 = {
 			isa = PBXGroup;
 			children = (
@@ -84,26 +143,15 @@
 		CAA0812F26508251004EE265 /* TO-DO */ = {
 			isa = PBXGroup;
 			children = (
+				CA6C4399265C669300CA0075 /* AppSections */,
+				CA6C4398265C649F00CA0075 /* Configuration */,
+				CA6C4397265C647900CA0075 /* Extension */,
+				CA6C439D265C6A1600CA0075 /* ReusableGroup */,
 				CAA0813026508251004EE265 /* TODOApp.swift */,
-				CA68ACC0265285E9002E42D0 /* BindingExtension.swift */,
-				CA68ACBE26528273002E42D0 /* TaskRowView.swift */,
-				CA68ACBC26527ADA002E42D0 /* TaskEditingView.swift */,
-				CA6A3C352653BE3400E6CC6D /* ProjectHeaderView.swift */,
-				CA26429E2651DEB00095077B /* HomeView.swift */,
-				CA7DD22C2657E67200984E2F /* ProjectSummaryBoxView.swift */,
-				CA7DD22A2657E4CD00984E2F /* TaskSubsequenceView.swift */,
-				CA2642A02651DEBD0095077B /* ProjectView.swift */,
-				CA8AED4B2656AAF40036818C /* CustomEmptyView.swift */,
-				CA2642A22651E6DC0095077B /* ProjectExtension.swift */,
-				CA6A3C392653C3BF00E6CC6D /* ProjectEditingView.swift */,
-				CA2642A42651E7C80095077B /* TaskExtension.swift */,
 				CAA0813226508251004EE265 /* ContentView.swift */,
-				CAA0813F2650892D004EE265 /* Main.xcdatamodeld */,
 				CAA0814226508D58004EE265 /* DataController.swift */,
-				CA7DD2282657BD9200984E2F /* ColorExtension.swift */,
 				CAA0813426508251004EE265 /* Assets.xcassets */,
 				CA6A3C372653C25B00E6CC6D /* Colors.xcassets */,
-				CAA0813926508251004EE265 /* Info.plist */,
 				CAA0813626508251004EE265 /* Preview Content */,
 			);
 			path = "TO-DO";
@@ -357,7 +405,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TO-DO/Preview Content\"";
 				DEVELOPMENT_TEAM = NAKVM6YWDQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "TO-DO/Info.plist";
+				INFOPLIST_FILE = "TO-DO/Configuration/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -379,7 +427,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TO-DO/Preview Content\"";
 				DEVELOPMENT_TEAM = NAKVM6YWDQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "TO-DO/Info.plist";
+				INFOPLIST_FILE = "TO-DO/Configuration/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

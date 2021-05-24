@@ -20,7 +20,7 @@ struct TaskRowView: View {
                 icon
             }
         }
-        .accessibilityLabel(accesibilitiLbl)
+        .accessibilityLabel(accessibilityCustomLabel)
     }
 }
 
@@ -41,7 +41,7 @@ private extension TaskRowView {
         }
     }
 
-    var accesibilitiLbl: Text {
+    var accessibilityCustomLabel: Text {
         if task.completed {
             return Text("\(task.unwrappedTitle) completed.")
         } else if task.priority == 3 {

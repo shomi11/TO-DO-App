@@ -13,7 +13,7 @@ struct ProjectView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var manageObjectContext
 
-    // MARK: -  Properties
+    // MARK: - Properties
     static let openTag: String? = "OpenProjectView"
     static let closeTag: String? = "ClosedProjectsView"
 

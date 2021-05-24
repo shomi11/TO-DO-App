@@ -60,7 +60,6 @@ extension Project {
         tasks?.allObjects as? [Task] ?? []
     }
 
-
     /// Sorting project tasks by user wishes.
     /// - Parameter sortOrder: use SortOrder enum for sorting tasks
     /// - Returns: array of tasks for current selected project, sorted by user choice.
