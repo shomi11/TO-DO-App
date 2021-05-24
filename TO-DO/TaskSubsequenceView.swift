@@ -30,16 +30,16 @@ private extension TaskSubsequenceView {
         NavigationLink(destination: TaskEditingView(task: task)) {
             HStack(spacing: 16) {
                 Circle()
-                    .stroke(Color(task.project?.unwrapedColor ?? "Light Blue"), lineWidth: 3)
+                    .stroke(Color(task.project?.unwrappedColor ?? "Light Blue"), lineWidth: 3)
                     .frame(width: 10, height: 10)
                 VStack(alignment: .leading) {
-                    Text(task.unwrapedTitle)
+                    Text(task.unwrappedTitle)
                         .font(.body)
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    if !task.unwrapedDetail.isEmpty {
-                        Text(task.unwrapedDetail)
+                    if !task.unwrappedDetail.isEmpty {
+                        Text(task.unwrappedDetail)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Project object extension for handling core data optionals, sorting projects and creating dummy project for previews.
 extension Project {
 
     static let colors = ["Pink",
@@ -23,49 +24,58 @@ extension Project {
                          "Gray"
     ]
 
-    var unwrapedTitle: String {
+    var unwrappedTitle: String {
         title ?? "New Project"
     }
 
-    var unwrapedCreationDate: Date {
+    var unwrappedCreationDate: Date {
         creationDate ?? Date()
     }
 
-    var unwrapedDetail: String {
+    var unwrappedDetail: String {
         detail ?? ""
     }
 
-    var unwrapedColor: String {
+    var unwrappedColor: String {
         color ?? "Light Blue"
     }
 
-    var comppletionAmmount: Double {
+    var completionAmount: Double {
         let items = tasks?.allObjects as? [Task] ?? []
         guard items.isEmpty == false else { return 0 }
         let completedTasks = items.filter(\.completed)
         return Double(completedTasks.count) / Double(items.count)
     }
 
-    var accesibilityLbl: Text {
+    var amountOfFinishedUserTaks: Double {
+        return completionAmount * 100
+    }
+
+    var accessibilityCustomLabel: Text {
         // swiftlint:disable:next line_length
-        return Text("\(unwrapedTitle), \(projectTasks.count) tasks, \(comppletionAmmount * 100, specifier: "%g") percent complete") //
+        return Text("\(unwrappedTitle), \(projectTasks.count) tasks, \(amountOfFinishedUserTaks, specifier: "%g") percent complete") //
     }
 
     var projectTasks: [Task] {
         tasks?.allObjects as? [Task] ?? []
     }
 
+
+    /// Sorting project tasks by user wishes.
+    /// - Parameter sortOrder: use SortOrder enum for sorting tasks
+    /// - Returns: array of tasks for current selected project, sorted by user choice.
     func projectTasks(using sortOrder: Task.SortOrder) -> [Task] {
         switch sortOrder {
         case .title:
-            return projectTasks.sorted { $0.unwrapedTitle < $1.unwrapedTitle }
+            return projectTasks.sorted { $0.unwrappedTitle < $1.unwrappedTitle }
         case .creationDate:
-            return projectTasks.sorted { $0.unwrapedCreationDate < $1.unwrapedCreationDate }
+            return projectTasks.sorted { $0.unwrappedCreationDate < $1.unwrappedCreationDate }
         case .default:
             return projectTasksDefaultSorted
         }
     }
 
+    /// Returns default sorted array of tasks for selected project.
     var projectTasksDefaultSorted: [Task] {
         return projectTasks.sorted { first, second in
             if first.completed == false {
@@ -82,10 +92,11 @@ extension Project {
             } else if first.priority < second.priority {
                 return false
             }
-            return first.unwrapedCreationDate < second.unwrapedCreationDate
+            return first.unwrappedCreationDate < second.unwrappedCreationDate
         }
     }
 
+    /// Project example for previews.
     static var example: Project {
         let controller = DataController(inRAMMemoryUsage: true)
         let context = controller.container.viewContext

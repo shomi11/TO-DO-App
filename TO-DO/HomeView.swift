@@ -13,6 +13,7 @@ struct HomeView: View {
     static let tag: String? = "HomeView"
 
     @EnvironmentObject var dataController: DataController
+
     @FetchRequest(entity: Project.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: true)],
                   predicate: NSPredicate(format: "closed = false"))
@@ -24,10 +25,13 @@ struct HomeView: View {
         [GridItem(.adaptive(minimum: 120, maximum: 120))]
     }
 
+    /// Initialize view Fetch request fetching tasks with limit of 8, only open tasks
+    /// from only open projects and top priority task first.
     init() {
         let taskRequest: NSFetchRequest<Task> = Task.fetchRequest()
         let taskClosedPredicate = NSPredicate(format: "completed = false")
         let projectClosedPredicate = NSPredicate(format: "project.closed = false")
+        /// Compound predicate combines several NSPredicate's.
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates:
                                                         [taskClosedPredicate, projectClosedPredicate])
         taskRequest.predicate = compoundPredicate
@@ -40,7 +44,7 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    topProjectHorizntalView
+                    topProjectHorizontalView
                     VStack(alignment: .leading) {
                         TaskSubsequenceView(title: "Next Task", tasks: tasks.wrappedValue.prefix(3))
                         TaskSubsequenceView(title: "More", tasks: tasks.wrappedValue.dropFirst(3))
@@ -55,7 +59,7 @@ struct HomeView: View {
 }
 
 extension HomeView {
-    var topProjectHorizntalView: some View {
+    var topProjectHorizontalView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: projectRows) {
                 ForEach(projects, content: ProjectSummaryBoxView.init)

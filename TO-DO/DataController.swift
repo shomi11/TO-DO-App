@@ -9,10 +9,13 @@ import Foundation
 import CoreData
 import SwiftUI
 
+/// Environment singleton class for managing core data stack, saving and deleting, also handling test data.
 class DataController: ObservableObject {
 
     let container: NSPersistentCloudKitContainer
 
+    /// Initialize data controller in memory(for testing and previewing), or on permanent storage for real app usage.
+    /// - Parameter inRAMMemoryUsage: boolean store in memory for testing or in permanent storage.
     init(inRAMMemoryUsage: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Main")
         if inRAMMemoryUsage {
@@ -25,6 +28,7 @@ class DataController: ObservableObject {
         }
     }
 
+    /// Static property to initialize in preview's for in memory usage.
     static var preview: DataController = {
         let controller = DataController(inRAMMemoryUsage: true)
         do {
@@ -35,6 +39,8 @@ class DataController: ObservableObject {
         return controller
     }()
 
+    /// Creates dummy data items and project for purpose of testing.
+    /// - Throws: Throws an NSError witch is called from save() on NSManagedObjectContext.
     func createSampleData() throws {
         let context = container.viewContext
         for ips in 1...5 {
@@ -55,16 +61,21 @@ class DataController: ObservableObject {
         try context.save()
     }
 
+    /// Saves core data context only if there are changes
+    /// if there are not, we really do not need to execute saving on context.
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
     }
 
+    /// Delete any NSManaged object from core data stack.
+    /// - Parameter object: object to delete from core data.
     func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
     }
 
+    /// Delete all managed object's in core data stack.
     func deleteAll() {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Task.fetchRequest()
         let batchRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)

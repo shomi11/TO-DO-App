@@ -17,16 +17,16 @@ struct ProjectSummaryBoxView: View {
             Text("\(tasks.count) open tasks")
                 .font(.caption)
                 .foregroundColor(.secondary)
-            Text(project.unwrapedTitle)
+            Text(project.unwrappedTitle)
                 .font(.title2)
-            ProgressView(value: project.comppletionAmmount)
-                .accentColor(Color(project.unwrapedColor))
+            ProgressView(value: project.completionAmount)
+                .accentColor(Color(project.unwrappedColor))
         }
         .padding()
         .background(Color.secondarySystemGroupedBackgroundColor)
         .cornerRadius(8)
         .accessibilityElement(children: .combine)
-        .accessibility(label: project.accesibilityLbl)
+        .accessibility(label: project.accessibilityCustomLabel)
     }
 }
 

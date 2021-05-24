@@ -15,7 +15,7 @@ struct TaskRowView: View {
     var body: some View {
         NavigationLink(destination: TaskEditingView(task: task)) {
             Label {
-                Text(task.unwrapedTitle)
+                Text(task.unwrappedTitle)
             } icon: {
                 icon
             }
@@ -43,13 +43,13 @@ private extension TaskRowView {
 
     var accesibilitiLbl: Text {
         if task.completed {
-            return Text("\(task.unwrapedTitle) completed.")
+            return Text("\(task.unwrappedTitle) completed.")
         } else if task.priority == 3 {
-            return Text("\(task.unwrapedTitle) is high priority.")
+            return Text("\(task.unwrappedTitle) is high priority.")
         } else if task.priority == 2 {
-            return Text("\(task.unwrapedTitle) is medium priority.")
+            return Text("\(task.unwrappedTitle) is medium priority.")
         } else {
-            return Text("\(task.unwrapedTitle)")
+            return Text("\(task.unwrappedTitle)")
         }
     }
 }

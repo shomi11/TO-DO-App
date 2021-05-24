@@ -7,31 +7,34 @@
 
 import Foundation
 
+/// Core data Task object extension
+/// Handling optionals in core data, managing some dummy data for preview's.
 extension Task {
 
     enum SortOrder {
         case title, `default`, creationDate
     }
 
-    var unwrapedTitle: String {
+    var unwrappedTitle: String {
         title ?? "New Task"
     }
 
-    var unwrapedCreationDate: Date {
+    var unwrappedCreationDate: Date {
         creationDate ?? Date()
     }
 
-    var unwrapedPriority: Int {
+    var unwrappedPriority: Int {
         Int(priority)
     }
 
-    var unwrapedDetail: String {
+    var unwrappedDetail: String {
         detail ?? ""
     }
 
+    /// Task example for preview usage.
     static var example: Task {
-       let contoller = DataController(inRAMMemoryUsage: true)
-        let context = contoller.container.viewContext
+       let controller = DataController(inRAMMemoryUsage: true)
+        let context = controller.container.viewContext
         let task = Task(context: context)
         task.title = "Example task"
         task.creationDate = Date()

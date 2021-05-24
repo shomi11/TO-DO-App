@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
+    /// Saving last user scene in scene storage
+    /// In App storage if user open two instances of app on iPad it will be shared on both.
     @SceneStorage("selectedView") var selectedView: String?
 
     var body: some View {

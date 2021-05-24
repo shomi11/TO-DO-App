@@ -20,12 +20,12 @@ struct ProjectEditingView: View {
 
     init(project: Project) {
         self.project = project
-        _title = State(wrappedValue: project.unwrapedTitle)
-        _detail = State(wrappedValue: project.unwrapedDetail)
-        _color = State(wrappedValue: project.unwrapedColor)
+        _title = State(wrappedValue: project.unwrappedTitle)
+        _detail = State(wrappedValue: project.unwrappedDetail)
+        _color = State(wrappedValue: project.unwrappedColor)
     }
 
-    let colorColoumns = [GridItem(.adaptive(minimum: 44))]
+    let colorColumns = [GridItem(.adaptive(minimum: 44))]
 
     var body: some View {
         Form {
@@ -35,8 +35,8 @@ struct ProjectEditingView: View {
             }
 
             Section(header: Text("Choose project color:")) {
-                LazyVGrid(columns: colorColoumns) {
-                    ForEach(Project.colors, id: \.self, content: chooseColorBtn)
+                LazyVGrid(columns: colorColumns) {
+                    ForEach(Project.colors, id: \.self, content: chooseColorButton)
                 }
                 .padding(.vertical, 6)
             }
@@ -58,7 +58,7 @@ struct ProjectEditingView: View {
         .navigationTitle("Edit Project")
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showDeleteConfirmation) {
-            Alert(title: Text("Delete \(project.unwrapedTitle)?"),
+            Alert(title: Text("Delete \(project.unwrappedTitle)?"),
                   message: Text("Are you sure?"),
                   primaryButton: .default(Text("Delete"),
                                           action: deleteProject),
@@ -77,7 +77,7 @@ struct ProjectEditingView: View {
         presentationMode.wrappedValue.dismiss()
     }
 
-    private func chooseColorBtn(for item: String) -> some View {
+    private func chooseColorButton(for item: String) -> some View {
         ZStack {
             Color(item)
                 .aspectRatio(1, contentMode: .fit)

@@ -14,9 +14,9 @@ struct ProjectHeaderView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(project.unwrapedTitle)
-                ProgressView(value: project.comppletionAmmount)
-                    .accentColor(Color(project.unwrapedColor))
+                Text(project.unwrappedTitle)
+                ProgressView(value: project.completionAmount)
+                    .accentColor(Color(project.unwrappedColor))
             }
             Spacer()
 
