@@ -116,7 +116,7 @@ fileprivate extension ProjectView {
                            addNewTask(to: project)
                         } label: {
                             Label("Add new task", systemImage: "plus")
-                                .accessibilityLabel(Text("Add new task."))
+                                .accessibilityLabel(Text("Add new task"))
                         }
                     }
                 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CA05E1CA265FECBD009A19C9 /* DevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05E1C9265FECBD009A19C9 /* DevTests.swift */; };
 		CA05E1CC2660F045009A19C9 /* ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05E1CB2660F045009A19C9 /* ExtensionsTest.swift */; };
+		CA05E1D426610476009A19C9 /* TO_DOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05E1D326610476009A19C9 /* TO_DOUITests.swift */; };
 		CA26429F2651DEB00095077B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26429E2651DEB00095077B /* HomeView.swift */; };
 		CA2642A12651DEBD0095077B /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2642A02651DEBD0095077B /* ProjectView.swift */; };
 		CA2642A32651E6DC0095077B /* ProjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2642A22651E6DC0095077B /* ProjectExtension.swift */; };
@@ -35,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CA05E1D626610476009A19C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAA0812526508251004EE265 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAA0812C26508251004EE265;
+			remoteInfo = "TO-DO";
+		};
 		CA803F6B265FDCC80085A42A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAA0812526508251004EE265 /* Project object */;
@@ -47,6 +55,9 @@
 /* Begin PBXFileReference section */
 		CA05E1C9265FECBD009A19C9 /* DevTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTests.swift; sourceTree = "<group>"; };
 		CA05E1CB2660F045009A19C9 /* ExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTest.swift; sourceTree = "<group>"; };
+		CA05E1D126610476009A19C9 /* TO-DOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TO-DOUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA05E1D326610476009A19C9 /* TO_DOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TO_DOUITests.swift; sourceTree = "<group>"; };
+		CA05E1D526610476009A19C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA26429E2651DEB00095077B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CA2642A02651DEBD0095077B /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		CA2642A22651E6DC0095077B /* ProjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectExtension.swift; sourceTree = "<group>"; };
@@ -77,6 +88,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA05E1CE26610476009A19C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA803F63265FDCC80085A42A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA05E1D226610476009A19C9 /* TO-DOUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CA05E1D326610476009A19C9 /* TO_DOUITests.swift */,
+				CA05E1D526610476009A19C9 /* Info.plist */,
+			);
+			path = "TO-DOUITests";
+			sourceTree = "<group>";
+		};
 		CA6C4397265C647900CA0075 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +198,7 @@
 			children = (
 				CAA0812F26508251004EE265 /* TO-DO */,
 				CA803F67265FDCC80085A42A /* TO-DOTests */,
+				CA05E1D226610476009A19C9 /* TO-DOUITests */,
 				CAA0812E26508251004EE265 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,6 +208,7 @@
 			children = (
 				CAA0812D26508251004EE265 /* TO-DO.app */,
 				CA803F66265FDCC80085A42A /* TO-DOTests.xctest */,
+				CA05E1D126610476009A19C9 /* TO-DOUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +241,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA05E1D026610476009A19C9 /* TO-DOUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA05E1D826610476009A19C9 /* Build configuration list for PBXNativeTarget "TO-DOUITests" */;
+			buildPhases = (
+				CA05E1CD26610476009A19C9 /* Sources */,
+				CA05E1CE26610476009A19C9 /* Frameworks */,
+				CA05E1CF26610476009A19C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA05E1D726610476009A19C9 /* PBXTargetDependency */,
+			);
+			name = "TO-DOUITests";
+			productName = "TO-DOUITests";
+			productReference = CA05E1D126610476009A19C9 /* TO-DOUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CA803F65265FDCC80085A42A /* TO-DOTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA803F6F265FDCC80085A42A /* Build configuration list for PBXNativeTarget "TO-DOTests" */;
@@ -257,6 +304,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					CA05E1D026610476009A19C9 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = CAA0812C26508251004EE265;
+					};
 					CA803F65265FDCC80085A42A = {
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = CAA0812C26508251004EE265;
@@ -281,11 +332,19 @@
 			targets = (
 				CAA0812C26508251004EE265 /* TO-DO */,
 				CA803F65265FDCC80085A42A /* TO-DOTests */,
+				CA05E1D026610476009A19C9 /* TO-DOUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA05E1CF26610476009A19C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA803F64265FDCC80085A42A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,6 +386,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA05E1CD26610476009A19C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA05E1D426610476009A19C9 /* TO_DOUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA803F62265FDCC80085A42A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +433,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CA05E1D726610476009A19C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAA0812C26508251004EE265 /* TO-DO */;
+			targetProxy = CA05E1D626610476009A19C9 /* PBXContainerItemProxy */;
+		};
 		CA803F6C265FDCC80085A42A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CAA0812C26508251004EE265 /* TO-DO */;
@@ -374,6 +446,44 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		CA05E1D926610476009A19C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NAKVM6YWDQ;
+				INFOPLIST_FILE = "TO-DOUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.milosmalovic11.TO-DOUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "TO-DO";
+			};
+			name = Debug;
+		};
+		CA05E1DA26610476009A19C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NAKVM6YWDQ;
+				INFOPLIST_FILE = "TO-DOUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.milosmalovic11.TO-DOUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "TO-DO";
+			};
+			name = Release;
+		};
 		CA803F6D265FDCC80085A42A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -577,6 +687,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA05E1D826610476009A19C9 /* Build configuration list for PBXNativeTarget "TO-DOUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA05E1D926610476009A19C9 /* Debug */,
+				CA05E1DA26610476009A19C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA803F6F265FDCC80085A42A /* Build configuration list for PBXNativeTarget "TO-DOTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

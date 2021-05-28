@@ -29,9 +29,7 @@ class ExtensionsTest: XCTestCase {
         )
 
         // Whenever binding is changed it will call functionToCall() and modify onChangeFuncRun variable
-        let changedBinding = binding.onChange {
-            functionToCall()
-        }
+        let changedBinding = binding.onChange { functionToCall() }
 
         // Taking original binding and changing it
         changedBinding.wrappedValue = "ABC"

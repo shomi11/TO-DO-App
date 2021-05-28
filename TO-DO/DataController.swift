@@ -26,6 +26,13 @@ class DataController: ObservableObject {
             guard error == nil else {
                 fatalError("cant load data, app is dead \(String(describing: error?.localizedDescription))") }
         }
+
+        #if DEBUG
+        if CommandLine.arguments.contains("enable-testing") {
+            self.deleteAll()
+        }
+        #endif
+
     }
 
     /// Static property to initialize in preview's for in memory usage.
