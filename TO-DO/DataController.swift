@@ -17,7 +17,7 @@ class DataController: ObservableObject {
     /// Initialize data controller in memory(for testing and previewing), or on permanent storage for real app usage.
     /// - Parameter inRAMMemoryUsage: boolean store in memory for testing or in permanent storage.
     init(inRAMMemoryUsage: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Main")
+        container = NSPersistentCloudKitContainer(name: "Main", managedObjectModel: Self.model)
         if inRAMMemoryUsage {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -37,6 +37,14 @@ class DataController: ObservableObject {
             fatalError("fatal error creating preview \(error.localizedDescription)")
         }
         return controller
+    }()
+
+    static let model: NSManagedObjectModel = {
+        guard let url = Bundle.main.url(forResource: "Main", withExtension: "momd") else {
+            fatalError("cant find Main")
+        }
+        guard let model = NSManagedObjectModel(contentsOf: url) else { fatalError("cant load model") }
+        return model
     }()
 
     /// Creates dummy data items and project for purpose of testing.

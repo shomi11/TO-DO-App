@@ -33,7 +33,7 @@ extension Task {
 
     /// Task example for preview usage.
     static var example: Task {
-       let controller = DataController(inRAMMemoryUsage: true)
+        let controller = DataController.preview
         let context = controller.container.viewContext
         let task = Task(context: context)
         task.title = "Example task"

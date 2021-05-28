@@ -97,7 +97,7 @@ extension Project {
 
     /// Project example for previews.
     static var example: Project {
-        let controller = DataController(inRAMMemoryUsage: true)
+        let controller = DataController.preview
         let context = controller.container.viewContext
         let project = Project(context: context)
         project.title = "Example project"
