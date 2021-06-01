@@ -5,8 +5,8 @@
 //  Created by Milos Malovic on 16.5.21..
 //
 
-import Foundation
 import CoreData
+import CoreSpotlight
 import SwiftUI
 
 /// Environment singleton class for managing core data stack, saving and deleting, also handling test data.
@@ -30,6 +30,7 @@ class DataController: ObservableObject {
         #if DEBUG
         if CommandLine.arguments.contains("enable-testing") {
             self.deleteAll()
+            UIView.setAnimationsEnabled(false)
         }
         #endif
 
@@ -65,12 +66,12 @@ class DataController: ObservableObject {
             project.creationDate = Date()
             project.closed = Bool.random()
 
-            for jks in 1...10 {
-                let taks = Task(context: context)
-                taks.title = "Task \(jks)"
-                taks.creationDate = Date()
-                taks.completed = Bool.random()
-                taks.project = project
+            for jus in 1...10 {
+                let task = Task(context: context)
+                task.title = "Task \(jus)"
+                task.creationDate = Date()
+                task.completed = Bool.random()
+                task.project = project
             }
         }
         try context.save()
@@ -98,5 +99,22 @@ class DataController: ObservableObject {
         let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = Project.fetchRequest()
         let batchRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
         _ = try? container.viewContext.execute(batchRequest2)
+    }
+
+    /// Writing task to spot light
+    /// - Parameter task: task to be shown in spot light
+    func update(_ task: Task) {
+        let taskID = task.objectID.uriRepresentation().absoluteString
+        let projectID = task.project?.objectID.uriRepresentation().absoluteString
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.title = task.unwrappedTitle
+        attributeSet.contentDescription = task.unwrappedDetail
+        let searchableItem = CSSearchableItem(
+            uniqueIdentifier: taskID,
+            domainIdentifier: projectID,
+            attributeSet: attributeSet
+        )
+        CSSearchableIndex.default().indexSearchableItems([searchableItem])
+        save()
     }
 }
