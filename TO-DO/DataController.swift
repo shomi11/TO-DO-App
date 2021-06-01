@@ -85,9 +85,15 @@ class DataController: ObservableObject {
         }
     }
 
-    /// Delete any NSManaged object from core data stack.
+    /// Delete any NSManaged object from core data stack and form spot light search.
     /// - Parameter object: object to delete from core data.
     func delete(_ object: NSManagedObject) {
+        let objectID = object.objectID.uriRepresentation().absoluteString
+        if object is Task {
+            CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [objectID])
+        } else {
+            CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [objectID])
+        }
         container.viewContext.delete(object)
     }
 
@@ -116,5 +122,13 @@ class DataController: ObservableObject {
         )
         CSSearchableIndex.default().indexSearchableItems([searchableItem])
         save()
+    }
+
+    func task(with identifier: String) -> Task? {
+        guard let url = URL(string: identifier) else { return nil }
+        guard let objectID = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else {
+            return nil
+        }
+        return try? container.viewContext.existingObject(with: objectID) as? Task
     }
 }

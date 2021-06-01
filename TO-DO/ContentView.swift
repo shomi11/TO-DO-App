@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreSpotlight
 
 struct ContentView: View {
 
@@ -33,7 +34,13 @@ struct ContentView: View {
                     Image(systemName: "checkmark")
                     Text("Closed")
                 }
-        }
+        }.onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+    }
+
+    /// When user taps task in spot light always return first to home
+    /// - Parameter input: any input
+    func moveToHome(_ input: Any) {
+        selectedView = HomeView.tag
     }
 }
 

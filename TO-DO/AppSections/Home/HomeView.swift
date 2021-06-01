@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CoreSpotlight
 
 struct HomeView: View {
 
@@ -20,6 +21,8 @@ struct HomeView: View {
 
     var projects: FetchedResults<Project>
     var tasks: FetchRequest<Task>
+
+    @State var spotlightSelectedTask: Task?
 
     var projectRows: [GridItem] {
         [GridItem(.adaptive(minimum: 120, maximum: 120))]
@@ -43,6 +46,15 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                if let spotlightTask = spotlightSelectedTask {
+                    NavigationLink(
+                        destination: TaskEditingView(task: spotlightTask),
+                        tag: spotlightTask,
+                        selection: $spotlightSelectedTask,
+                        label: EmptyView.init
+                    )
+                    .id(spotlightTask)
+                }
                 VStack(alignment: .leading) {
                     topProjectHorizontalView
                     VStack(alignment: .leading) {
@@ -54,6 +66,16 @@ struct HomeView: View {
             }
             .background(Color.groupedSystemBackgroundColor.ignoresSafeArea())
             .navigationTitle("Home")
+        }.onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotLightItem)
+    }
+
+    func selectTask(with identifier: String) {
+        spotlightSelectedTask = dataController.task(with: identifier)
+    }
+
+    func loadSpotLightItem(_ userActivity: NSUserActivity) {
+        if let identifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            selectTask(with: identifier)
         }
     }
 }
