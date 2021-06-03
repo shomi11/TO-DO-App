@@ -142,11 +142,16 @@ extension DataController {
     }
 
     func removeReminder(for project: Project) {
-
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        let projectID = project.objectID.uriRepresentation().absoluteString
+        userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [projectID])
     }
 
     private func requestNotification(completion: @escaping (Bool) -> Void) {
-
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.requestAuthorization(options: [.alert, .sound]) { isGranted, _ in
+            completion(isGranted)
+        }
     }
 
     private func placeReminder(for project: Project, completion: @escaping (Bool) -> Void) {
