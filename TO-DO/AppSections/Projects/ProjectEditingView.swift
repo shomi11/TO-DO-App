@@ -140,7 +140,7 @@ struct ProjectEditingView: View {
         .accessibilityAddTraits(
             item == color
                 ? [.isButton, .isSelected]
-            : .isButton
+                : .isButton
         )
         .accessibilityLabel(item)
     }
