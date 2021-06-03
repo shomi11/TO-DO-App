@@ -19,6 +19,7 @@ struct ProjectEditingView: View {
     @State private var color: String
     @State private var shouldRemindMe: Bool
     @State private var remindMe: Date
+    @State private var showNotificationError = false
 
     init(project: Project) {
         self.project = project
@@ -52,6 +53,14 @@ struct ProjectEditingView: View {
 
             Section(header: Text("Reminder")) {
                 Toggle("Show reminder", isOn: $shouldRemindMe.animation().onChange(updateEditedProject))
+                    .alert(isPresented: $showNotificationError) {
+                        Alert(
+                            title: Text("Something went wrong"),
+                            message: Text("Notification problem"),
+                            primaryButton: .default(Text("Show app settings"), action: showNotificationSettings),
+                            secondaryButton: .cancel()
+                        )
+                    }
                 if shouldRemindMe {
                     DatePicker(
                         "Time",
@@ -78,11 +87,13 @@ struct ProjectEditingView: View {
         .navigationTitle("Edit Project")
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showDeleteConfirmation) {
-            Alert(title: Text("Delete \(project.unwrappedTitle)?"),
-                  message: Text("Are you sure?"),
-                  primaryButton: .default(Text("Delete"),
-                                          action: deleteProject),
-                  secondaryButton: .cancel())
+            Alert(
+                title: Text("Delete \(project.unwrappedTitle)?"),
+                message: Text("Are you sure?"),
+                primaryButton: .default(Text("Delete"),
+                                        action: deleteProject),
+                secondaryButton: .cancel()
+            )
         }
     }
 
@@ -92,8 +103,16 @@ struct ProjectEditingView: View {
         project.color = color
         if shouldRemindMe {
             project.reminder = remindMe
+            dataController.setReminders(for: project) { success in
+                if !success {
+                    project.reminder = nil
+                    shouldRemindMe = false
+                    showNotificationError = true
+                }
+            }
         } else {
             project.reminder = nil
+            dataController.removeReminder(for: project)
         }
     }
 
@@ -124,6 +143,14 @@ struct ProjectEditingView: View {
             : .isButton
         )
         .accessibilityLabel(item)
+    }
+
+    private func showNotificationSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        UIApplication.shared.open(settingsURL)
+
     }
 }
 
