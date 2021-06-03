@@ -138,7 +138,28 @@ class DataController: ObservableObject {
 extension DataController {
 
     func setReminders(for project: Project, completion: @escaping (Bool) -> Void) {
-
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                self.requestNotification { granted in
+                    switch granted {
+                    case true:
+                        self.placeReminder(for: project, completion: completion)
+                    case false:
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
+                    }
+                }
+            case .authorized:
+                self.placeReminder(for: project, completion: completion)
+            default:
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
+        }
     }
 
     func removeReminder(for project: Project) {
@@ -155,7 +176,39 @@ extension DataController {
     }
 
     private func placeReminder(for project: Project, completion: @escaping (Bool) -> Void) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = project.unwrappedTitle
+        notificationContent.sound = .default
+        if let detail = project.detail {
+            notificationContent.subtitle = detail
+        }
 
+        let dateComponents = Calendar.current.dateComponents(
+            [.hour, .minute],
+            from: project.reminder ?? Date()
+        )
+
+        let notificationTrigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents,
+            repeats: true
+        )
+
+        let notificationID = project.objectID.uriRepresentation().absoluteString
+        let notificationRequest = UNNotificationRequest(
+            identifier: notificationID,
+            content: notificationContent,
+            trigger: notificationTrigger
+        )
+
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.add(notificationRequest) { error in
+            DispatchQueue.main.async {
+                if error != nil {
+                    completion(false)
+                } else {
+                    completion(true)
+                }
+            }
+        }
     }
-
 }
