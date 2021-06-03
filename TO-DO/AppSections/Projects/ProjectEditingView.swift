@@ -17,12 +17,21 @@ struct ProjectEditingView: View {
     @State private var title: String
     @State private var detail: String
     @State private var color: String
+    @State private var shouldRemindMe: Bool
+    @State private var remindMe: Date
 
     init(project: Project) {
         self.project = project
         _title = State(wrappedValue: project.unwrappedTitle)
         _detail = State(wrappedValue: project.unwrappedDetail)
         _color = State(wrappedValue: project.unwrappedColor)
+        if let reminder = project.reminder {
+            _remindMe = State(wrappedValue: reminder)
+            _shouldRemindMe = State(wrappedValue: true)
+        } else {
+            _remindMe = State(wrappedValue: Date())
+            _shouldRemindMe = State(wrappedValue: false)
+        }
     }
 
     let colorColumns = [GridItem(.adaptive(minimum: 44))]
@@ -39,6 +48,17 @@ struct ProjectEditingView: View {
                     ForEach(Project.colors, id: \.self, content: chooseColorButton)
                 }
                 .padding(.vertical, 6)
+            }
+
+            Section(header: Text("Reminder")) {
+                Toggle("Show reminder", isOn: $shouldRemindMe.animation().onChange(updateEditedProject))
+                if shouldRemindMe {
+                    DatePicker(
+                        "Time",
+                        selection: $remindMe.onChange(updateEditedProject),
+                        displayedComponents: .hourAndMinute
+                    )
+                }
             }
 
             // swiftlint:disable:next line_length
@@ -70,6 +90,11 @@ struct ProjectEditingView: View {
         project.title = title
         project.detail = detail
         project.color = color
+        if shouldRemindMe {
+            project.reminder = remindMe
+        } else {
+            project.reminder = nil
+        }
     }
 
     private func deleteProject() {

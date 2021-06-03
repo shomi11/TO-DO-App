@@ -8,6 +8,7 @@
 import CoreData
 import CoreSpotlight
 import SwiftUI
+import UserNotifications
 
 /// Environment singleton class for managing core data stack, saving and deleting, also handling test data.
 class DataController: ObservableObject {
@@ -131,4 +132,25 @@ class DataController: ObservableObject {
         }
         return try? container.viewContext.existingObject(with: objectID) as? Task
     }
+}
+
+/// Notification code handling
+extension DataController {
+
+    func setReminders(for project: Project, completion: @escaping (Bool) -> Void) {
+
+    }
+
+    func removeReminder(for project: Project) {
+
+    }
+
+    private func requestNotification(completion: @escaping (Bool) -> Void) {
+
+    }
+
+    private func placeReminder(for project: Project, completion: @escaping (Bool) -> Void) {
+
+    }
+
 }
